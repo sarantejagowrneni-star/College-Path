@@ -14,6 +14,7 @@ interface StudentContextType {
   setCurrentStep: (step: number) => void;
   isOnboarded: boolean;
   setIsOnboarded: (value: boolean) => void;
+  logout: () => void;
 }
 
 const StudentContext = createContext<StudentContextType | undefined>(undefined);
@@ -72,6 +73,23 @@ export const StudentProvider = ({ children }: { children: ReactNode }) => {
     setStudentDataState((prev) => (prev ? { ...prev, ...data } : null));
   };
 
+  const logout = () => {
+    setStudentDataState(null);
+    setMarkedColleges([]);
+    setIsRegistered(false);
+    setIsOnboarded(false);
+    setCurrentStep(1);
+
+    localStorage.removeItem("studentData");
+    localStorage.removeItem("markedColleges");
+    localStorage.removeItem("isRegistered");
+    localStorage.removeItem("isOnboarded");
+    localStorage.removeItem("currentStep");
+
+    // Optional: Redirect to home is usually handled by the component calling logout or protected routes
+    window.location.href = "/";
+  };
+
   const toggleMarkedCollege = (collegeId: string) => {
     setMarkedColleges((prev) => {
       const exists = prev.find((m) => m.id === collegeId);
@@ -101,6 +119,7 @@ export const StudentProvider = ({ children }: { children: ReactNode }) => {
         setCurrentStep,
         isOnboarded,
         setIsOnboarded,
+        logout,
       }}
     >
       {children}

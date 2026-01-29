@@ -6,6 +6,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { LogOut } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import Logo from "@/components/Logo";
 import CollegeCard from "@/components/CollegeCard";
@@ -15,7 +24,7 @@ import { colleges, apDistricts, tgDistricts, scholarships } from "@/data/college
 import { toast } from "sonner";
 
 const Dashboard = () => {
-  const { studentData, updateStudentData, markedColleges, isCollegeMarked } = useStudent();
+  const { studentData, updateStudentData, markedColleges, isCollegeMarked, logout } = useStudent();
   const [activeTab, setActiveTab] = useState("profile");
   const [editOpen, setEditOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -95,11 +104,23 @@ const Dashboard = () => {
                 </span>
               )}
             </Button>
-            <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-              <span className="font-semibold text-accent">
-                {studentData?.firstName?.[0]}{studentData?.lastName?.[0]}
-              </span>
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center cursor-pointer hover:bg-accent/20 transition-colors">
+                  <span className="font-semibold text-accent">
+                    {studentData?.firstName?.[0]}{studentData?.lastName?.[0]}
+                  </span>
+                </div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={logout} className="text-destructive focus:text-destructive cursor-pointer">
+                  <LogOut className="w-4 h-4 mr-2" />
+                  Log out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </header>
@@ -401,7 +422,7 @@ const Dashboard = () => {
           {/* Marked Colleges Tab */}
           <TabsContent value="marked" className="space-y-6 animate-fade-in">
             <h2 className="text-2xl font-bold">Saved Colleges</h2>
-            
+
             {markedCollegesList.length > 0 ? (
               <div className="grid md:grid-cols-2 gap-4">
                 {markedCollegesList.map((college) => (
