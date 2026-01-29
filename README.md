@@ -1,5 +1,8 @@
 🎓 College Path:
 Link: https://college-path-self.vercel.app/register
+
+Plese enter ramdom number in place of otp
+
  Navigate Your FutureCollege Path is a comprehensive web platform designed for students in Andhra Pradesh (AP) and Telangana (TG) who have completed their Intermediate education. It simplifies the transition to higher education by matching students with the best-fit colleges and scholarships based on their marks, entrance ranks (EAPCET/EAMCET/JEE), and socioeconomic status.
 
 ✨ Key FeaturesSecure Onboarding: OTP-verified registration via email and phone.3-Stage Profile Builder: 1.  Identity: Basic personal and 10th-grade data.2.  Academic: Stream-specific data (MPC, BiPC, MEC, HEC).3.  Entrance & Socio: Integration of JEE, AP EAPCET, and TS EAMCET ranks, plus scholarship eligibility tracking.Intelligent Dashboard: * Profile Bar: Manage and edit your data anytime.College Explorer: Filter colleges by State and District with full contact details and direct links.Scholarship Engine: Real-time matching for government and merit-based aid.AI-Driven Recommendations: Powered by GPT-4o to provide personalized college suggestions based on complex rank cut-offs.Bookmark System: Save colleges to your "Marked List" for easy comparison later.
