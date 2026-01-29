@@ -1,5 +1,5 @@
 🎓 College Path:
-Link: https://college-path-self.vercel.app/register
+Link: https://college-path-zeta.vercel.app/register
 
 Plese enter ramdom number in place of otp
 
